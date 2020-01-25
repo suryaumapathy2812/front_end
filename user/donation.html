@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Donate</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">Crowd Fund</a>
+            <div id="_header">
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <form method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Fund</th>
+                    </tr>
+                </thead>
+                <tbody id="donation">
+
+                </tbody>
+            </table>
+            <center> <input class="form-control" type="number" id="donation_amount" required><br>
+            <button class="btn btn-primary" onclick="donate()">Donate</button> </center>
+        </form>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="js/donation.js"></script>
+    <script src="js/services.js"></script>
+    <script>
+        header();
+        donation();
+    </script>
+</body>
+
+</html>
+
+

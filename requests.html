@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <title>Requests</title>
+</head>
+
+<body>
+    <div class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Test</a>
+        <nav class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="#"> <i class="fa fa-home"></i> Home </a>
+            <a class="nav-item nav-link active" href="requests.html"> Requests </a>
+            <a class="nav-item nav-link" href="donations.html"> Donations</a>
+            <a class="nav-item nav-link" onclick="logout()"> <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout</a>
+        </nav>
+    </div>
+
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active"><a>Requests</a></li>
+        </ol>
+    </div>
+
+    <div class="card border-dark" style="padding: 0%; margin-top: -15px;">
+        <div class="card-body">
+
+            <Strong>
+                <h4 class="card-title">Username : <label id="username"></label></h4>
+                <p class="card-text">User ID : <label id="user_id">#</label> </p>
+            </Strong>
+
+            <table class="table" id="tableData">
+                <thead class="thead">
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Name</th>
+                        <th>Fund</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="tableBody">
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script src="node_modules/moment/min/moment.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/requests.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/server.js"></script>
+    <script>
+        //checkLoggedIn();
+        checkRole();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.material.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Register</title>
+
+    <style>
+        .alert{
+            display: none;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type=text]{
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+        <div class="navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Test</a>
+            <nav class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="login.html"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                <a class="nav-item nav-link active" href="register.html">Register</a>
+            </nav>
+        </div>
+
+        <div class="alert alert-primary" role="alert">
+
+          </div>
+
+        <form class="form-signin" onsubmit="Check()">
+            <center>
+                <h1>Register</h1>
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <label for="confirmPassword" class="sr-only">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-warning active">
+                        <input type="radio" name="role" id="role" value="A" autocomplete="off">Admin
+                    </label>
+                    <label class="btn btn-warning">
+                        <input type="radio" name="role" id="role" value="D" autocomplete="off">Donor
+                    </label>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" id="signupBtn" type="submit">Sign up</button>
+            </center>
+        </form>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+</html>

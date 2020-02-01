@@ -12,7 +12,7 @@ function checkRole(){
 
 function userDonations(){
     var id = JSON.parse(localStorage.getItem("isLoggedIn")).user_id;
-    var url = "http://localhost:5000/usrDonations";
+    var url =server + "usrDonations";
     var formdata = {ID:id};
     usrTblHead();
     //console.log(formdata);
@@ -40,7 +40,7 @@ function usrdisplay(data){
 
 function adminDonations(){
     var id = JSON.parse(localStorage.getItem("isLoggedIn")).user_id;
-    var url = "http://localhost:5000/admDonations";
+    var url =server+ "admDonations";
     var formdata = {ID:id};
     admTblHead();
     console.log(formdata);

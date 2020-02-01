@@ -1,11 +1,8 @@
 function checkLoggedIn(){
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     console.log(user);
-    if(user == null){
-        window.location.href = "Login.html";
-        break;
-    }else{
-        window.location.href = "#";
+    if(user !== null){
+        window.location.href = "requests.html";
     }
 }
 

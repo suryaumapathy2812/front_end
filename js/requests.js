@@ -11,6 +11,8 @@ function checkRole(){
 //=====================================Admin Request==========================================//
 function adminReqs(){
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
+    $("#username").text(user.username);
+    $("#user_id").append(user.user_id);
     var url = server+ "adminRequests/" + user.user_id;
     $.get(url, function(data){
         //console.log(data);

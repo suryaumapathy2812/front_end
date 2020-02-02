@@ -1,4 +1,7 @@
 function request(){
+    let user = JSON.parse(localStorage.getItem("isLoggedIn"));
+    $("#username").append(user.username);
+
     var urlParams = new URLSearchParams(window.location.search);
     var urlID = urlParams.get("id");
     console.log(urlID);

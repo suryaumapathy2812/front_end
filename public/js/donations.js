@@ -11,9 +11,11 @@ function checkRole(){
 //==========================================User donations=========================================================//
 
 function userDonations(){
+    let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     var id = JSON.parse(localStorage.getItem("isLoggedIn")).user_id;
+    $("#username").append(user.username);
     var url =server + "usrDonations";
-    var formdata = {ID:id};
+    var formdata = {ID:id};   
     usrTblHead();
     //console.log(formdata);
     $.post(url,formdata, function(data){
@@ -39,7 +41,9 @@ function usrdisplay(data){
 
 
 function adminDonations(){
+    let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     var id = JSON.parse(localStorage.getItem("isLoggedIn")).user_id;
+    $("#username").append(user.username);
     var url =server+ "admDonations";
     var formdata = {ID:id};
     admTblHead();

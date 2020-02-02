@@ -11,11 +11,13 @@ function checkRole(){
 //=====================================Admin Request==========================================//
 function adminReqs(){
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
-    $("#username").text(user.username);
+    $("#username").append(user.username);
     $("#user_id").append(user.user_id);
+    $("#loadingspinner").show();
     var url = server+ "adminRequests/" + user.user_id;
     $.get(url, function(data){
         //console.log(data);
+        $("#loadingspinner").hide();
         displayAdminRequests(data);
         tableOnClick();
     });
@@ -37,9 +39,14 @@ function displayAdminRequests(data){
 //======================================User Request=============================================//
 
 function userReqs(){
+    let user = JSON.parse(localStorage.getItem("isLoggedIn"));
+    $("#username").append(user.username);
     var url = server+ "userRequests";
+    //console.log("Display Spinner 1");
+    $("#loadingspinner").show();
     $.get(url, function(data){
         //console.log(data);
+        $("#loadingspinner").hide();
         displayUserRequests(data);
         tableOnClick();
         dataTable();

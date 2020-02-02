@@ -15,10 +15,13 @@
 <body>
     <div class="navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="index.html">CharityApp</a>
-        <nav class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#"> <i class="fa fa-home"></i> Home </a>
-            <a class="nav-item nav-link" href="requests.html"> Requests</a>    
+        <nav class="navbar-nav">
+            <a class="nav-item nav-link" href="index.html"> <i class="fa fa-home"></i> Home </a>
+            <a class="nav-item nav-link" href="requests.html"> Requests</a>
             <a class="nav-item nav-link" href="donations.html"> Donations</a>
+        </nav>
+        <nav class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" id="username"> <i class="fa fa-at" aria-hidden="true"></i> </a>
             <a class="nav-item nav-link" onclick="logout()"> <i class="fa fa-sign-out" aria-hidden="true"></i>
                 Logout</a>
         </nav>
@@ -28,17 +31,29 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
             <li class="breadcrumb-item active"><a>Requests</a></li>
-            <a href="createrequest.html" class="btn btn-primary ml-auto">Add Request</a>
+            <!--
+            <a href="createrequest.html" class="btn btn-primary ml-auto">Add Request</a>-->
+
+            <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#exampleModal">
+                Add Request
+            </button>
         </ol>
     </div>
 
     <div class="card border-dark" style="padding: 0%; margin-top: -15px;">
         <div class="card-body">
 
-            <Strong>
-                <h4 class="card-title">Username : <label id="username"></label></h4>
-                <p class="card-text">User ID : <label id="user_id">#</label> </p>
-            </Strong>
+            <h3>List Requests</h3>
+
+            <!-- Button trigger modal -->
+
+            <!-- Modal -->
+
+            <div class="d-flex justify-content-center">
+                <div class="spinner-grow" role="status" id="loadingspinner" style="display: none;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
 
             <table class="table" id="tableData">
                 <thead class="thead">
@@ -56,6 +71,57 @@
         </div>
     </div>
 
+    <!-- Add Request Modal-->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" class="form" onsubmit="create()">
+                        <table class="table">
+
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
+                                    placeholder="">
+                                <small id="helpId" class="form-text text-muted"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="amount">Amount(Rs.)</label>
+                                <input type="number" class="form-control" name="amount" id="amount"
+                                    aria-describedby="helpId" placeholder="">
+                                <small id="helpId" class="form-text text-muted"></small>
+                            </div>
+
+                            <button class="btn btn-primary" type="submit">Donate</button>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!--
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="assets/moment.min.js"></script>
     <script src="assets/jquery.min.js"></script>
     <script src="assets/jquery.dataTables.min.js"></script>
@@ -64,6 +130,7 @@
     <script src="assets/underscore-min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
     <script src="js/requests.js"></script>
+    <script src="js/createrequest.js"></script>
     <script src="js/service.js"></script>
     <script src="js/server.js"></script>
     <script>

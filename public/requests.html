@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <title>Requests</title>
+
+    <style>
+        .nav-link{
+            cursor: pointer;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -17,7 +25,7 @@
         <a class="navbar-brand" href="index.html">CharityApp</a>
         <nav class="navbar-nav">
             <a class="nav-item nav-link" href="index.html"> <i class="fa fa-home"></i> Home </a>
-            <a class="nav-item nav-link" href="requests.html"> Requests</a>
+            <a class="nav-item nav-link active" href="requests.html"> Requests</a>
             <a class="nav-item nav-link" href="donations.html"> Donations</a>
         </nav>
         <nav class="navbar-nav ml-auto">
@@ -34,7 +42,7 @@
             <!--
             <a href="createrequest.html" class="btn btn-primary ml-auto">Add Request</a>-->
 
-            <button type="button" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" id="addReqBtn" class="btn btn-primary ml-auto" data-toggle="modal" data-target="#exampleModal">
                 Add Request
             </button>
         </ol>
@@ -57,13 +65,15 @@
 
             <table class="table" id="tableData">
                 <thead class="thead">
-                    <tr>
+                    <tr id="thead_tr">
                         <th>Request ID</th>
                         <th>Name</th>
-                        <th>Fund</th>
+                        <th>Fund (&#8360;)</th>
+                        <th>Requested Date</th>
+                        <th>Expiry Date</th>
                     </tr>
                 </thead>
-                <tbody class="tbody" id="tableBody">
+                <tbody class="tableBody">
 
                 </tbody>
             </table>
@@ -107,8 +117,12 @@
                                     aria-describedby="helpId" placeholder="">
                                 <small id="helpId" class="form-text text-muted"></small>
                             </div>
+                            <div class="form-group">
+                                <label for="amount">Expiry Date</label>
+                                <input type="date" id="expiryDate">
+                            </div>
 
-                            <button class="btn btn-primary" type="submit">Donate</button>
+                            <button class="btn btn-primary" type="submit">Create</button>
                         </table>
                     </form>
                 </div>
@@ -123,6 +137,7 @@
 
 
     <script src="assets/moment.min.js"></script>
+    <script src="assets/moment-timezone-with-data.min.js"></script>
     <script src="assets/jquery.min.js"></script>
     <script src="assets/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>

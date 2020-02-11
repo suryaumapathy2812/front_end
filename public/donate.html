@@ -67,50 +67,46 @@
         </div>
 
         <div class="breadCrumb" aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb" id="breadcrumb_li">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="requests.html">Requests</a></li>
-                <li class="breadcrumb-item active"><a>Donate</a></li>
+
             </ol>
         </div>
 
         <main class="main" align="left">
             <form method="post" onsubmit="donate()">
                 <table class="table">
-                    <tbody>
-                    <tr>
-                    <th>Request ID : </th><td><p id="reqID"></p></td>
-                </tr>
-                        
-                <tr><th>Name</th>
+                    <tbody id="tableBody">
+                        <tr>
+                            <th>Request ID : </th>
+                            <td>
+                                <p id="reqID"></p>
+                            </td>
+                        </tr>
 
-                    <td>
+                        <tr>
+                            <th>Name</th>
 
-                        <p id="reqName"></p>
-                    </td>
-                    </tr>
+                            <td>
 
-                    <tr>
-                        <th>Descrtiption</th>
-                        <td><p id="reqDes"></p></td>
-                    </tr>
+                                <p id="reqName"></p>
+                            </td>
+                        </tr>
 
-                    <tr><th>Fund</th>
-                    <td><p id="reqFund"></p></td>
-                    </tr>
-                    <tr>
-                        <th>Donation</th>
-                        <td>
-                    <input class="form-control" id="donation" type="number"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
+                        <tr>
+                            <th>Description</th>
+                            <td>
+                                <p id="reqDes"></p>
+                            </td>
+                        </tr>
 
-                            <button class="btn btn-primary" type="submit">Donate</button>
-
-                        </td>
-                    </tr>
+                        <tr>
+                            <th>Fund (&#8360;)</th>
+                            <td>
+                                <p id="reqFund"></p>
+                            </td>
+                        </tr>
                 </table>
             </form>
         </main>
@@ -126,7 +122,7 @@
     <script src="js/donate.js"></script>
     <script>
         //checkLoggedIn();
-        request();
+        checkUser();
     </script>
 
 </body>

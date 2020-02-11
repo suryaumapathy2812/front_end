@@ -1,6 +1,6 @@
 function checkUser() {
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
-    if (user.ROLE == 'A') {
+    if (user.role == 'A') {
         adminRequest();
     } else {
         userRequest();
@@ -13,54 +13,56 @@ function adminRequest() {
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     $("#username").append(user.username);
 
-
-
     var urlParams = new URLSearchParams(window.location.search);
     var urlID = urlParams.get("id");
-    //console.log(urlID);
+    console.log(urlID);
 
     var url = server + "request/" + urlID;
     $.get(url, function (data) {
-        //console.log(data);
+        console.log(data);
 
-        var tbody = "<tr><th>Funds Received (&#8360;)</th>";
+        var tbody = "<tr><th>Funds Received</th>";
         tbody += "<td> <p id='reqRec'></p></td> </tr>";
-        tbody += "<tr><th> Status </th>";
+        tbody += "<tr><th> STATUS </th>";
         tbody += "<td> <p id='reqStatus'></p> </td> </tr>";
 
         var url = server + "receivedDonations?id=" + urlID;
         $.get(url, function (DATA) {
             //console.log(DATA);
-            if (DATA[0] == null) {
-                $("#reqRec").text("No donations received yet");
-            } else {
-                $("#reqRec").text(DATA[0].Donation);
-            }
+            $("#reqRec").text(DATA[0].Donation);
         });
+
 
         $("#tableBody").append(tbody);
         $("#reqID").text(data[0].request_id);
-        $("#reqName").text(data[0].NAME);
-        $("#reqDes").text(data[0].DESCRIPTION);
+        $("#reqName").text(data[0].name);
+        $("#reqDes").text(data[0].description);
         $("#reqFund").text(data[0].amount);
 
-        if (data[0].status == 'OPEN') {
+        if(data[0].status == '1'){
             $("#reqStatus").text("OPEN");
-        } else if (data[0].status == 'CLOSED') {
+        }else if(data[0].status == '0'){
             $("#reqStatus").text("CLOSED");
-        } else {
+        }else{
             $("#reqStatus").text("EXPIRED");
         }
+        
+        var option = "<select class='btn' id='status' onchange='changeStatus()'>";
+        option += "<option value=''>--Please choose an option--</option>";
+        option += "<option value='1'>OPEN</option>";
+        option += "<option value='0'>CLOSED</option>";
+        option += "<option value='2'>EXPIRED</option>";
+        option += "</select>";
+
 
         var content = "";
         content += "<tr align='center'>";
+        content += "<td> " + option + " </td>";
         content += "<td colspan='2'> <a class='btn btn-secondary' href='requests.html'>Back";
         content += "<tr>";
 
         $("title").html("Request");
         $("#tableBody").append(content);
-        $("#breadcrumb_li").append("<li class='breadcrumb-item active'><a> #"+data[0].request_id+" </a></li>");
-
 
     });
 }
@@ -82,27 +84,24 @@ function userRequest() {
     $.get(url, function (data) {
         console.log(data);
         $("#reqID").text(data[0].request_id);
-        $("#reqName").text(data[0].NAME);
-        $("#reqDes").text(data[0].DESCRIPTION);
+        $("#reqName").text(data[0].name);
+        $("#reqDes").text(data[0].description);
         $("#reqFund").text(data[0].amount);
 
         var content = "<tr>";
         content += "<th>Donation</th>";
-        content += "<td> <input class='form-control' id='donation' type='number' min='1' required> </td>";
+        content += "<td> <input class='form-control' id='donation' type='number'> </td>";
         content += "</tr><tr>";
         content += "<td></td>";
         content += "<td> <button class='btn btn-primary' type='submit'>Donate</button> </td>";
         content += "</tr>";
 
         $("#tableBody").append(content);
-        $("#breadcrumb_li").append("<li class='breadcrumb-item active'><a> Donate </a></li>");
 
     });
 }
 
 function donate() {
-    event.preventDefault();
-
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     var urlParams = new URLSearchParams(window.location.search);
     var urlID = urlParams.get("id");
@@ -110,13 +109,10 @@ function donate() {
     var reqID = urlID;
     var donorID = user.user_id;
     var donation = $("#donation").val();
-    var email = user.email;
 
-    var formdata = { reqID: reqID, donorID: donorID, donation: donation, email: email };
+    var formdata = { reqID: reqID, donorID: donorID, donation: donation };
 
     var url = server + "donate";
-
-    console.log(url, formdata);
     $.post(url, formdata, function (data) {
         console.log(data);
         window.location.href = "donations.html";
@@ -124,3 +120,28 @@ function donate() {
 }
 
 //===============================================================================================================================
+
+
+// 0 - CLOSED
+// 1 - OPEN
+// 2 - EXPIRED
+
+
+
+function changeStatus() {
+    console.log("changeStatus");
+    var urlParams = new URLSearchParams(window.location.search);
+    var urlID = urlParams.get("id");
+    var url = server + "request/" + urlID;
+    $.get(url, function (data) {
+        console.log(data);
+        var newStatus = $("#status").val();
+        console.log(newStatus);
+        var url = server + "updateRequestStatus";
+        var formdata = {status:newStatus,request_id:urlID}
+        $.post(url,formdata, function(data){
+            console.log(data);
+            window.location.reload();
+        });
+    });
+}

@@ -1,52 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/bootstrap.min.css">
     <link rel="stylesheet" href="assets/font-awesome.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <title>Donate</title>
-
+    <title>Admin</title>
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-        }
 
-        .grid-container {
-            display: grid;
-            grid-template-rows: 1fr 1fr 10fr;
-            height: 100vh;
-            margin: 0em;
-        }
-
-        .breadcrumb {
-            margin: 0;
-            height: 1fr;
-        }
-
-        .main {
-            padding: 20px 30px 20px 30px;
-        }
     </style>
-
 </head>
-
 <body>
-
+    
     <div class="grid-container">
+
 
         <div class="navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="index.html">CharityApp</a>
             <nav class="navbar-nav">
                 <a class="nav-item nav-link" href="index.html"> <i class="fa fa-home"></i> Home </a>
-                <a class="nav-item nav-link" href="requests.html"> Requests </a>
-                <a class="nav-item nav-link active" href="donations.html"> Donations</a>
+                <a class="nav-item nav-link active" href="superAdmin.html"> Users</a>
+                <a class="nav-item nav-link" href="superAdmin2.html"> Requests</a>
             </nav>
             <nav class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" id="username"> <i class="fa fa-at" aria-hidden="true"></i> </a>
@@ -55,41 +33,56 @@
             </nav>
         </div>
 
-        <div class="breadCrumb" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active"><a>Donation</a></li>
-            </ol>
+
+        <div class="filter">
+            <select id="filter" onchange="users()">
+                <option value="All" selected>All</option>
+                <option value="'A'">Admin</option>
+                <option value="'D'">Donor</option>
+              </select>
         </div>
+    
+        
+    
+        <table class="table" id="tableData">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Created</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            
+            </tbody>
+        </table>
 
-        <main class="main">
-            <table class="table" id="tableData">
-                <thead id="thead">
 
-                </thead>
-                <tbody id="tableBody">
 
-                </tbody>
-            </table>
-        </main>
 
     </div>
 
-    <script src="assets/jquery.min.js"></script>
+
+
+
+
+
     <script src="assets/moment.min.js"></script>
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/jquery.dataTables.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="assets/popper.min.js"></script>
     <script src="assets/underscore-min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
-    <script src="assets/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="js/service.js"></script>
     <script src="js/server.js"></script>
-    <script src="js/donations.js"></script>
+    <script src="js/supusers.js"></script>
     <script>
-        //checkLoggedIn();
-        cRole();
+        users()
     </script>
-
 </body>
-
 </html>

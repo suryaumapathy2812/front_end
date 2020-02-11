@@ -1,11 +1,9 @@
 function checkRole(){
-    let user = JSON.parse(localStorage.getItem("isLoggedIn")).ROLE;
+    let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     //console.log(user);
-    if(user == 'A'){
-        //console.log("user role is"+user);
+    if(user.role == 'A'){
         adminReqs();
     }else{
-        //console.log("user role is"+user);
         userReqs();
         let addReqBtn = document.getElementById("addReqBtn");
         addReqBtn.style.display = "none";
@@ -20,36 +18,14 @@ function adminReqs(){
     $("#loadingspinner").show();
     var url = server+ "adminRequests/" + user.user_id;
     $.get(url, function(data){
-        //console.log(data);
+        console.log(data);
         $("#loadingspinner").hide();
         //dataTable();
         displayAdminRequests(data);
         dataTable();
-        //tableOnClick();
+        tableOnClick();
       
     });
-}
-
-function displayAdminRequests(data){
-    $("#tableData tbody").empty();
-    var content = "";
-    console.log(data);
-
-    for(let d of data){
-        var date = moment(d.created_on,'YYYY-MM-DDTHH:mm').fromNow();
-        var expDate = moment(d.expiry_date, "YYYY-MM-DDTHH:mm").fromNow();
-        content += "<tr>";
-        content += "<td>" +d.request_id+ "</td>";
-        content += "<td>" +d.name+ "</td>";
-        content += "<td>" +d.amount+ "</td>";
-        content += "<td>" +date+ "</td>";
-        content += "<td>" +(d.expiry_date != null ?  expDate : "-" )+ "</td>";
-        content += "<td>" + d.status +"</td>";
-        content += "<td> <a class='btn btn-primary' href='donate.html?id=" +d.request_id+ "'> View </td>";
-        content += "</tr>";
-    }
-    $("#thead_tr").append("<th>Status</th>  <th>View</th>");
-    $("#tableData tbody").append(content);
 }
 
 function closeRequest(request_id){
@@ -60,6 +36,27 @@ function closeRequest(request_id){
     }
 }
 
+function displayAdminRequests(data){
+    $("#tableData tbody").empty();
+    var content = "";
+    for(let d of data){
+        var date = moment(d.created_on,'YYYY-MM-DDTHH:mm').fromNow();
+        var expDate = moment(d.expiry_date, "YYYY-MM-DDTHH:mm").fromNow();
+        //console.log(Date);
+        content += "<tr>";
+        content += "<td><a href='donate.html?id=" +d.request_id+ "'>#" +d.request_id+ "</td>";
+        content += "<td>" +d.name+ "</td>";
+        content += "<td>" +d.amount+ "</td>";
+        content += "<td>" +date+ "</td>";
+        content += "<td>" +(expDate != null ? expDate : "")+ "</td>";
+        content+= "<td>" + d.status +"</td>";
+        if ( d.expired != 0) {
+          content += "<td> <button class='btn btn-primary' onclick='closeRequest(" + d.request_id + ")' >Close</button>  </td>";
+        }
+        content += "</tr>";
+    }
+    $("#tableData tbody").append(content);
+}
 
 //======================================User Request=============================================//
 
@@ -73,9 +70,9 @@ function userReqs(){
         console.log(data);
         $("#loadingspinner").hide();
         var newData = _.where(data,{'status':"OPEN"});
-        //console.log(newData);
+        console.log(newData);
         displayUserRequests(data);
-        //tableOnClick();
+        tableOnClick();
         dataTable();
     });
 }
@@ -86,18 +83,15 @@ function displayUserRequests(data){
         var date = moment(d.created_on,'YYYY-MM-DDTHH:mm').fromNow();
         var expDate = moment(d.expiry_date, "YYYY-MM-DDTHH:mm").fromNow();
         content += "<tr>";
-        content += "<td>" +d.request_id+ "</td>";
+        content += "<td><a href='donate.html?id=" +d.request_id+ "'>#" +d.request_id+ "</td>";
         content += "<td>" +d.name+ "</td>";
         content += "<td>" +d.amount+ "</td>";
         content += "<td>" +date+ "</td>";
-        content += "<td>" +(d.expiry_date != null ? expDate : "-")+ "</td>";
-        //content += "<td>" + d.status +"</td>";
-        content += "<td> <a class='btn btn-primary' href='donate.html?id=" +d.request_id+ "'> Donate </td>";
-
+        content += "<td>" +(expDate !=null ? expDate : "")+ "</td>";
+        content += "<td>" + d.status +"</td>";
         content += "</tr>";
     }
     //console.log(content);
-    $("#thead_tr").append("<th>View</th>");
     $("#tableData tbody").append(content);
 }
 
@@ -105,6 +99,7 @@ function displayUserRequests(data){
 //===============================================================================================//
 
 function tableOnClick(){
+    console.log("table On Click");
     $(document).ready(function() {
         $('#tableData tr').click(function() {
             var href = $(this).find("a").attr("href");

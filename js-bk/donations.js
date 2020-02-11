@@ -1,7 +1,7 @@
-function cRole(){
-    let user = JSON.parse(localStorage.getItem("isLoggedIn")).ROLE;
+function checkRole(){
+    let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     //console.log(user);
-    if(user == 'A'){
+    if(user.role == 'A'){
         adminDonations();
     }else{
         userDonations();
@@ -31,7 +31,7 @@ function usrTblHead(){
     tHead += "<tr>";
     tHead += "<th>Request ID</th>";
     tHead += "<th>Name</th>";
-    tHead += "<th>Funds Donated(&#8360;)</th>";
+    tHead += "<th>Funds Donated</th>";
     tHead += "<th>Date</th>";
     tHead += "</tr>";
     $("#thead").html(tHead);
@@ -42,8 +42,7 @@ function usrdisplay(data){
     var content ="";
     for (let d of data){
         var date = moment(d.donation_date,"YYYY-MM-DDTHH:mm").fromNow();
-        console.log(d.donation_date);
-        console.log(date);
+        //console.log(d.donation_date);
         content += "<tr>";
         content += "<td>" + d.request_id + "</td>";
         content += "<td>" + d.name + "</td>";
@@ -61,14 +60,13 @@ function adminDonations(){
     let user = JSON.parse(localStorage.getItem("isLoggedIn"));
     var id = JSON.parse(localStorage.getItem("isLoggedIn")).user_id;
     $("#username").append(user.username);
-
     var url =server+ "admDonations";
     var formdata = {ID:id};
     admTblHead();
-
     //console.log(formdata);
     $.post(url,formdata, function(data){
-        //console.log(data);
+        console.log(data);
+    
         admdisplay(data);
         dataTable();
   
@@ -94,7 +92,8 @@ function admdisplay(data){
     var content ="";
     for (let d of data){
         var date =  moment(d.donation_date, "YYYY-MM-DDTHH:mm").fromNow();
-        //console.log(d.donation_date);
+        //console.log(momdate);
+        console.log(d.donation_date);
         content += "<tr>";
         content += "<td>" + d.request_id + "</td>";
         content += "<td>" + d.name + "</td>";
@@ -112,7 +111,7 @@ function admdisplay(data){
 
 
 function dataTable(){
-    //console.log("dataTable");
+    console.log("dataTable");
     //$(document).ready( function () {
         $('#tableData').DataTable();
     //} );

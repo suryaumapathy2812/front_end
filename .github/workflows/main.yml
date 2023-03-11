@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: read codebase
-        uses: suryaumapathy2812/topic-tagger-action@topicTagger@v1
+        uses: suryaumapathy2812/topic-tagger-action@v1
         with:
           # enter the starting point
           start-point: "./public/js/"

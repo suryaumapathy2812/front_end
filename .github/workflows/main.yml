@@ -9,7 +9,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: suryaumapathy2812/topic-tagger-action@topicTagger@v1
+      - name: read codebase
+        uses: suryaumapathy2812/topic-tagger-action@topicTagger@v1
         with:
           # enter the starting point
           start-point: "./public/js/"

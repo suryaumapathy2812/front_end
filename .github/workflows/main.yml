@@ -13,5 +13,5 @@ jobs:
         uses: suryaumapathy2812/topic-tagger-action@v1
         with:
           # enter the starting point
-          start-point: "./public/js"
+          start-point: "./"
           version: "v2"

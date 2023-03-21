@@ -14,3 +14,4 @@ jobs:
         with:
           # enter the starting point
           start-point: "./public/js"
+          version: "v2"

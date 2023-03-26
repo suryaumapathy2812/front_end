@@ -27,7 +27,7 @@ jobs:
           start-point: './'
 
       - name: run ESlint
-        run: npx eslint -c ./.eslintrc.custom.json --ext .js --output-file eslint-results.json --format json ./ && echo "Success"
+        run: npx eslint -c ./.eslintrc.custom.json --ext .js --output-file eslint-results.json --format json ./ || true
 
       - name: Run ESLint Score
         uses: suryaumapathy2812/ESlint-score@v1

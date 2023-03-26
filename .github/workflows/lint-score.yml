@@ -26,7 +26,7 @@ jobs:
         run: npm install eslint
         
       - name: run ESlint
-        run: eslint . --ext .js --format json > eslint-results.json
+        run: npx eslint . --ext .js --format json > eslint-results.json
 
       - name: Run ESLint Score
         uses: suryaumapathy2812/ESlint-score@v1

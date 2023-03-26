@@ -21,6 +21,7 @@ jobs:
         uses: suryaumapathy2812/ESlint-score@v1
         with:
           action: "SETUP"
+          start-point: './'
 
       - name: Install ESLint
         run: npm install eslint

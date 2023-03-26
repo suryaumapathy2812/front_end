@@ -19,7 +19,10 @@ jobs:
 
       - name: Install ESLint
         run: npm install eslint
-      
+
+      - name: list directory
+        run: ls
+
       - name: Copy custom .eslintrc.custom.json file
         run: cp dist/.eslintrc.custom.json .
       

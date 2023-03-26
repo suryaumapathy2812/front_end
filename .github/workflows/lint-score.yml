@@ -24,7 +24,7 @@ jobs:
         run: cp .github/.eslintrc.custom.json .
       
       - name: Run ESLint Score
-        uses: suryaumapathy2812/eslint-score@v1
+        uses: suryaumapathy2812/ESlint-score@v1
         with:
           start-point: './'
       

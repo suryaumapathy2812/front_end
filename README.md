@@ -1,6 +1,6 @@
 # E-commerce
 
-## Buyer
+## Buyer 
 
 ### Create an account
 - Scenario 1: Successfully create an account

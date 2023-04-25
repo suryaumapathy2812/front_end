@@ -14,4 +14,4 @@ jobs:
         with:
           # enter the starting point
           start-point: "./"
-          version: "v3"
+          version: "v4"

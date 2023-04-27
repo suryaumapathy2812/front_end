@@ -19,6 +19,10 @@ Form validations are an important part of any web application. Test your forms w
 - Test special characters to ensure that they're not allowed in certain fields, such as passwords.
 - Test for data type validation, such as ensuring that an email input field only accepts a valid email address format.
 
+## 4. Test Data Validation
+
+Datas validation are more important that form validations. Every data must be checked before passing it the backend or database
+
 ## 4. Test Navigation and Links
 
 Test all the links and navigation elements in the web project, including menu items, buttons, and hyperlinks. This helps identify broken links or navigation issues that could affect the user experience.

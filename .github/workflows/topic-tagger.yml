@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Topic Tagging
     steps:
+      - name: Get PR ID
+        id: pr_id
+        run: |
+          PR_ID=$(echo ${{ github.event.pull_request.number }})
+          echo "PR_ID=$PR_ID" >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v3
       - name: Topic Tagger

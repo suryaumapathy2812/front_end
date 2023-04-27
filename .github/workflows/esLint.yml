@@ -1,9 +1,11 @@
 name: ESLint Score
 
 on:
+  pull_request:
+    types: [opened, synchronize]
   push:
-    branches:
-      - master
+    branches-ignore:
+      - main
 
 jobs:
   eslint-score:

@@ -26,5 +26,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: latest-results
-          path: '${{ github.workspace }}/*/latest-results.json'
+          path: '${{ github.workspace }}/output/latest-results.json'
           if-no-files-found: error

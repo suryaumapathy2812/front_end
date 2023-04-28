@@ -14,6 +14,12 @@ jobs:
       
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - uses: actions/download-artifact@v3
+        if: always()
+        with:
+          name: latest-results
+          path: './records/'
 
       - name: Topic Tagger
         id: topic-tagger

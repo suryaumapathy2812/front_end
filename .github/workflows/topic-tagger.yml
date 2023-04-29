@@ -16,7 +16,7 @@ jobs:
 
       - name: Topic Tagger
         id: topic-tagger
-        uses: suryaumapathy2812/topic-tagger-action@v1
+        uses: suryaumapathy2812/topic-tagger-action@dev
         with:
           start-point: "./"
           version: "v4"

@@ -19,14 +19,18 @@ Form validations are an important part of any web application. Test your forms w
 - Test special characters to ensure that they're not allowed in certain fields, such as passwords.
 - Test for data type validation, such as ensuring that an email input field only accepts a valid email address format.
 
-## 4. Test Navigation and Links
+## 4. Test Data Validation
+
+Datas validation are more important that form validations. Every data must be checked before passing it the backend or database
+
+## 5. Test Navigation and Links
 
 Test all the links and navigation elements in the web project, including menu items, buttons, and hyperlinks. This helps identify broken links or navigation issues that could affect the user experience.
 
-## 5. Test Error Messages
+## 6. Test Error Messages
 
 When testing a web project, test the error messages displayed to the user. This includes error messages for invalid inputs, server errors, and other issues. Ensure that the error messages are clear and informative, and that they provide helpful guidance on how to resolve the issue.
 
-## 6. Use Test Data
+## 7. Use Test Data
 
 It's important to use test data when testing a web project, rather than real user data. This ensures that real user data remains confidential and unaffected by testing. Make sure that the test data covers a range of scenarios and edge cases.
